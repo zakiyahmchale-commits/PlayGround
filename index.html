@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#101619" />
+  <title>Lot Legends — Precision Parking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lot Legends home"><span class="brand-mark">L<span>L</span></span><span class="brand-name">LOT<span>LEGENDS</span></span></a>
+      <div class="session-pill"><span class="live-dot"></span><span>FREE ROAM</span><i></i><span>SESSION 01</span></div>
+      <div class="top-actions"><div class="weather"><span class="sun">☼</span><span>GOLDEN HOUR</span><b>18°</b></div><button id="soundBtn" class="icon-btn" aria-label="Toggle sound" title="Toggle sound">♫</button><button id="resetBtn" class="icon-btn" aria-label="Restart drive" title="Restart drive">↻</button></div>
+    </header>
+    <section class="game-stage" aria-label="Parking game">
+      <canvas id="gameCanvas" aria-label="Drive and park your car"></canvas>
+      <div class="stage-vignette"></div>
+      <div class="mission-card glass">
+        <div class="eyebrow"><span class="eyebrow-line"></span>DRIVING SCHOOL <span class="mission-number">01 / 06</span></div>
+        <h1>Into the<br><em>perfect spot.</em></h1>
+        <p>Ease into the highlighted bay. Keep it clean, keep it centered.</p>
+        <div class="objective"><span class="target-icon">⌖</span><div><small>YOUR OBJECTIVE</small><strong>Bay 24 <span>·</span> Reverse park</strong></div><span class="target-arrow">↗</span></div>
+        <div class="mission-stats"><div><small>BEST SCORE</small><strong id="bestScore">—</strong></div><div><small>IMPACTS</small><strong id="impactCount">00</strong></div><div><small>TIME</small><strong id="timer">00:00</strong></div></div>
+      </div>
+      <div class="top-right-hud">
+        <div class="minimap-card glass"><div class="mini-head"><span>LOT OVERVIEW</span><span class="mini-north">N ↑</span></div><canvas id="miniMap" width="190" height="124"></canvas><div class="mini-legend"><span><i class="you-dot"></i>YOU</span><span><i class="goal-dot"></i>DESTINATION</span></div></div>
+        <div class="gear-card glass"><span class="gear-label">GEAR</span><strong id="gear">P</strong><span class="gear-caption">AUTO</span></div>
+      </div>
+      <div class="bottom-hud">
+        <div class="speed-card glass"><div class="speed-top"><span>SPEED</span><span>KM/H</span></div><div class="speed-readout"><strong id="speed">000</strong><span class="speed-unit">KM/H</span></div><div class="speed-track"><i id="speedBar"></i></div></div>
+        <div class="center-hint glass" id="hint"><span class="hint-key">W</span><span class="hint-key">A</span><span class="hint-key">S</span><span class="hint-key">D</span><span>TO DRIVE</span></div>
+        <div class="parking-progress glass"><span class="progress-icon">◉</span><div><small>PARKING ASSIST</small><strong id="assistText">FIND BAY 24</strong><div class="progress-track"><i id="progressBar"></i></div></div></div>
+      </div>
+      <div class="toast" id="toast" role="status"></div>
+      <div class="start-overlay" id="startOverlay">
+        <div class="start-panel glass">
+          <div class="start-kicker"><span class="live-dot"></span>YOUR NEXT DRIVE STARTS HERE</div>
+          <h2>Make every<br><em>move count.</em></h2>
+          <p>Take the wheel, find Bay 24, and park with precision. No rush — just you and the open lot.</p>
+          <button class="start-button" id="startBtn"><span>START DRIVING</span><b>↗</b></button>
+          <div class="start-controls"><span>⌨ KEYBOARD</span><span>WASD / ARROWS</span><span class="control-divider">·</span><span>SPACE BRAKE</span></div>
+        </div>
+      </div>
+      <div class="complete-overlay hidden" id="completeOverlay"><div class="complete-panel glass"><div class="complete-star">✦</div><div class="eyebrow">PARKING COMPLETE</div><h2>Nicely<br><em>done.</em></h2><p id="resultText">A clean park. That's how it's done.</p><div class="result-score"><span>DRIVE SCORE</span><strong id="scoreValue">100</strong></div><button class="start-button" id="againBtn"><span>DRIVE AGAIN</span><b>↗</b></button></div></div>
+      <div class="touch-controls" aria-label="Touch driving controls"><div class="steer-pad"><button data-control="left" aria-label="Steer left">‹</button><button data-control="right" aria-label="Steer right">›</button></div><div class="pedals"><button data-control="reverse" class="pedal reverse">REV</button><button data-control="forward" class="pedal drive">DRIVE</button><button data-control="brake" class="pedal brake">BRAKE</button></div></div>
+      <div class="damage-flash" id="damageFlash"></div>
+    </section>
+    <footer class="footer"><div><span class="footer-mark">LL</span><span>THE LOT IS YOURS.</span></div><div class="footer-center"><span>1 / 6</span><i></i><span>BEGINNER CIRCUIT</span></div><div><span class="online-dot"></span><span>CONNECTED</span></div></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
